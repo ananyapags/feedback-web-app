@@ -21,8 +21,6 @@ function FeedbackForm() {
     }
   }, [feedbackEdit]);
 
-  // NOTE: This should be checking input value not state as state won't be the updated value until the next render of the component
-
   // prettier-ignore
   const handleTextChange = ({ target: { value } }) => { // 👈  get the value
     if (value === '') {
@@ -54,14 +52,12 @@ function FeedbackForm() {
         addFeedback(newFeedback);
       }
 
-      // NOTE: reset to default state after submission
-      setBtnDisabled(true); // 👈  add this line to reset disabled
-      setRating(10); //👈 add this line to set rating back to 10
+      setBtnDisabled(true);
+      setRating(10);
       setText("");
     }
   };
 
-  // NOTE: pass selected to RatingSelect so we don't need local duplicate state
   return (
     <Card>
       <form onSubmit={handleSubmit}>
